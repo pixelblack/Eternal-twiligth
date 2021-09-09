@@ -1,0 +1,107 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+     <title><%: ConfigurationManager.AppSettings["WebSiteName"] + "-" + Page.Title %> </title>
+    <!-- metadatos globales -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="author" content="Einier Freyre Corona (Pixel)" />
+    <meta name="keywords" content="Jeimy,grupo,baile,canto,etc" />
+    <!-- links -->
+    <link rel="stylesheet" href="Styles/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="Styles/font-awesome.min.css" type="text/css" />
+    <link rel="icon" href="Resources/NoIcon.png" type="image/x-icon" /> 
+    <asp:ContentPlaceHolder ID="HEAD" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light p-0 mb-1">
+     <div class="container">
+            <a href="Default.aspx" class="navbar-brand">
+                <img class="navbar-brand" width="50" height="60" src="Resources/NoIcon.png" />
+                <%: ConfigurationManager.AppSettings["WebSiteName"] %></a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse">
+                <ul class="navbar-nav" style=" font-weight:600">
+                    <li class="nav-item"><a class="nav-link" href="Default.aspx">Pagina Principal</a></li>
+                    <li class="nav-item"><a class="nav-link" href="News.aspx">Noticias</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Music.aspx">Musica</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Photo.aspx">Fotos</a></li>                 
+                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">Opciones de Usuario</a>
+                        <div class="dropdown-menu">
+                            <a href="Register.aspx" class="dropdown-item">Registrarse!</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="Login.aspx" class="dropdown-item">Iniciar Sesion</a>
+                        </div>
+                    </li>                
+                </ul>
+            </div>
+        </div>
+        <span runat="server" id="lblnombre" class="navbar-text"></span>
+    </nav> 
+        <form id="form1" runat="server">           
+                <asp:ContentPlaceHolder ID="BODY" runat="server">
+                </asp:ContentPlaceHolder>
+            
+            <asp:ScriptManager runat="server" ID="ScriptManager1">
+                <Scripts>
+                    <asp:ScriptReference Name="jquery" />
+                    <asp:ScriptReference Name="Bootstrap" />
+                    <asp:ScriptReference Name="Popper" />
+                </Scripts>
+            </asp:ScriptManager>
+        </form>    
+    <footer class="pt-4 my-md-5 pt-md-5 border-top container">
+    <div class="row">
+      <div class="col-6 col-sm">
+        <img class="mb-2" src="Resources/NoIcon.png" alt="" width="24" height="24"/>
+        <small class="d-block mb-3 text-dark">Copyright &copy;2021 - <%: ConfigurationManager.AppSettings["WebSiteName"] %></small>
+      </div>   
+      <div class="col-6 col-sm">
+        <h5>Siguenos en...</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="link-secondary" href="<%: ConfigurationManager.AppSettings["LinkToFacebook"] %>"><img width="35" height="35" src="Resources/facebook.png"/> Facebook</a></li>
+          <li><a class="link-secondary" href="<%: ConfigurationManager.AppSettings["LinkToTwiter"] %>"><img width="35" height="35" src="Resources/twiter.png"/> Twiter</a></li>
+          <li><a class="link-secondary" href="<%: ConfigurationManager.AppSettings["LinkToInstagram"] %>"><img width="35" height="35" src="Resources/instagram.png"/> Instagram</a></li>
+          <li><a class="link-secondary" href="<%: ConfigurationManager.AppSettings["LinkToYoutube"] %>"><img width="35" height="35" src="Resources/youtube.png"/> Youtube</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-sm">
+        <h5>Acerca de ...</h5>
+        <ul class="list-unstyled text-small">
+          <li>Version: 1.56.30</li>
+          <li>Programacion y Diseño: Einier Freyre Corona (Pixel Black)</li>
+          <li><button type="button" class="btn btn-link" data-toggle="modal" data-target="#contactModal">Contactenos</button></li>    
+        </ul>
+      </div>
+    </div>
+  </footer>     
+
+    <!-- modales de informacion -->
+    <div class="modal fade" id="contactModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Contactenos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
+                </div>      
+                <div class="modal-body">
+                    <p>Pueden escribirnos sus quejas y sugerencias al programador a cargo de la pagina</p>
+                    <ul>
+                        <li>Pagina de Facebook : <a href="http://www.facebook.com/einierfreyre.corona a facebook">einierfreyre Corona</a></li>
+                        <li>Watsap: <span class="text-primary">53033933</span></li>                
+                    </ul>
+                </div>
+                <div class="modal-footer"></div>
+           </div>        
+        </div>
+    </div>
+</body>
+</html>
